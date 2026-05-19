@@ -40,7 +40,7 @@
       "description": "Noma'lum yo'nalishlar uchun zaxira sahifa."
     },
     "dashboard": {
-      "title": "Boshqaruv paneli",
+      "title": "Dashboard",
       "description": "Asosiy ko'rsatkichlar va umumiy analitika."
     },
     "leads": {
@@ -234,11 +234,11 @@
     }
   },
   "dashboard": {
-    "loadingTitle": "Boshqaruv paneli yuklanmoqda",
+    "loadingTitle": "Dashboard yuklanmoqda",
     "loadingDescription": "Analitika va taqsimotlar olinmoqda.",
-    "errorTitle": "Boshqaruv paneli mavjud emas",
-    "errorDescription": "Boshqaruv paneli ma'lumotlarini yuklab bo'lmadi.",
-    "title": "Boshqaruv paneli",
+    "errorTitle": "Dashboard mavjud emas",
+    "errorDescription": "Dashboard ma'lumotlarini yuklab bo'lmadi.",
+    "title": "Dashboard",
     "welcome": "Xush kelibsiz",
     "workspaceFallback": "Ish maydoni",
     "totalLeads": "Jami mijozlar",
@@ -1861,7 +1861,7 @@
       "can_manage_ai_settings": "AI sozlamalarini boshqarish",
       "can_view_logs": "Jurnallarni ko'rish",
       "dashboard": {
-        "view": "Boshqaruv paneli"
+        "view": "Dashboard"
       },
       "leads": {
         "view": "Lidlarni ko'rish",
@@ -1926,7 +1926,7 @@
       "can_manage_ai_settings": "AI sozlamalarini qo'shish va tahrirlashga ruxsat beradi.",
       "can_view_logs": "Tizim jurnallarini ko'rishga ruxsat beradi.",
       "dashboard": {
-        "view": "Boshqaruv paneli va KPI sahifalari"
+        "view": "Dashboard va KPI sahifalari"
       },
       "leads": {
         "view": "Lidlar ro'yxati va lid tafsilotini ko'rish",
