@@ -20,7 +20,7 @@ export function lazyRoute<T extends ComponentType<unknown>>(
   routeKey: string,
 ): LazyExoticComponent<T> {
   return lazy(async () => {
-    const reloadGuardKey = `solar:lazy-retry:${routeKey}`;
+    const reloadGuardKey = `hoshang:lazy-retry:${routeKey}`;
 
     try {
       const module = await importer();

@@ -26,7 +26,7 @@ Misol:
 ```json
 {no
   "id": "uuid",
-  "name": "Solar Package 20kW",
+  "name": "Hoshang Package 20kW",
   "price": "78000000.00",
   "is_promoted": true,
   "is_recommended": true,
@@ -49,7 +49,7 @@ Misol:
 ```json
 {
   "category": "uuid",
-  "name": "Solar Package 20kW",
+  "name": "Hoshang Package 20kW",
   "description": "Commercial package",
   "price": "78000000.00",
   "stock_quantity": 4,
@@ -126,4 +126,3 @@ Response:
 
 - `subsidy_amount` va `price_after_subsidy` product unit price bo'yicha qaytadi.
 - Contract va public calculator ham shu yangi maximum-cap formula bilan ishlaydi.
-

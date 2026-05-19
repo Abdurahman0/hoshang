@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 
 
 import { apiClient } from '../../lib/api-client';
@@ -223,7 +223,7 @@ export async function toggleUserActive(id: EntityId): Promise<ManagedUser | null
 }
 
 export async function listPermissions(): Promise<UserPermission[]> {
-  // Preferred backend endpoint (Solar API): /api/auth/all-permissions/
+  // Preferred backend endpoint (HOSHANG API): /api/auth/all-permissions/
   // Fallbacks are kept for older deployments.
   const candidates = [
     '/api/auth/all-permissions/',

@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Solar",
+    "appName": "Hoshang",
     "loading": "Yuklanmoqda...",
     "save": "Saqlash",
     "cancel": "Bekor qilish",
@@ -157,7 +157,7 @@
   },
   "auth": {
     "login": {
-      "eyebrow": "Solar CRM",
+      "eyebrow": "Hoshang CRM",
       "subtitle": "CRM boshqaruv platformasi",
       "usernameLabel": "Foydalanuvchi nomi",
       "usernamePlaceholder": "developer",
@@ -169,7 +169,7 @@
       "signingIn": "Kirilmoqda...",
       "hidePassword": "Parolni yashirish",
       "showPassword": "Parolni ko'rsatish",
-      "footerRights": "© 2026 Solar. Barcha huquqlar himoyalangan.",
+      "footerRights": "© 2026 Hoshang. Barcha huquqlar himoyalangan.",
       "footerPowered": "Ishlab chiquvchi"
     },
     "accessDenied": {
@@ -356,7 +356,7 @@
       "customerAmount": "Mijoz to`lovi",
       "referencePower": "Subsidiya tayanch quvvati",
       "panelTypes": {
-        "jinkoJa": "Jinko / JA Solar",
+        "jinkoJa": "Jinko / JA Hoshang",
         "longiHiMoX10": "Longi HI MO X10"
       },
       "inverterTypes": {

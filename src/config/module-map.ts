@@ -1,6 +1,6 @@
 import type { AppModule } from '../types/architecture';
 
-// Solar CRM - Green NRG Admin Dashboard Modules
+// Hoshang CRM - Green NRG Admin Dashboard Modules
 export const moduleMap: AppModule[] = [
   {
     id: 'dashboard',

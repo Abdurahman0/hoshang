@@ -32,7 +32,7 @@ export interface NavigationGroupConfig {
   items: NavigationItemConfig[];
 }
 
-// Navigation structure for Solar CRM
+// Navigation structure for Hoshang CRM
 export const navigationConfig: NavigationGroupConfig[] = [
   {
     id: 'main',

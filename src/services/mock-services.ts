@@ -326,7 +326,7 @@ function createDashboardOverview(
 				{ key: 'paid', label: 'Paid', count: 75 },
 			],
 			products_by_category: [
-				{ key: 'solar-panels', label: 'Solar Panels', count: 54 },
+				{ key: 'HOSHANG-panels', label: 'HOSHANG Panels', count: 54 },
 				{ key: 'inverters', label: 'Inverters', count: 24 },
 				{ key: 'battery', label: 'Battery', count: 14 },
 			],

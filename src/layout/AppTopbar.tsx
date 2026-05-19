@@ -13,7 +13,7 @@ interface AppTopbarProps {
 	showRouteMeta?: boolean
 }
 
-const THEME_STORAGE_KEY = 'solar-theme'
+const THEME_STORAGE_KEY = 'hoshang-theme'
 
 function getInitialIsDarkTheme() {
 	if (typeof window === 'undefined') {

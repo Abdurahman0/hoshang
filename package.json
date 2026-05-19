@@ -1,8 +1,8 @@
 {
-	"name": "solar-crm",
+	"name": "hoshang-crm",
 	"private": true,
 	"version": "1.0.0",
-	"description": "Solar CRM - Admin dashboard for Green NRG Energy Solutions.",
+	"description": "Hoshang CRM - Admin dashboard for Green NRG Energy Solutions.",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",

@@ -1,14 +1,14 @@
-# Solar CRM Frontend
+# Hoshang CRM Frontend
 
-Frontend for Solar CRM (admin/developer panel only).
+Frontend for Hoshang CRM (admin/developer panel only).
 
 ## Source of Truth
 
 Backend/API mapping is defined in:
 
-- `Solar CRM Frontend Pages.txt`
+- `Hoshang CRM Frontend Pages.txt`
 
-Template documentation from the original Solar clone has been removed.
+Template documentation from the original Hoshang clone has been removed.
 
 ## Run
 

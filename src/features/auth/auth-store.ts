@@ -21,7 +21,7 @@ interface LogoutOptions {
 
 type AuthStateListener = (state: AuthState) => void;
 
-const AUTH_USER_STORAGE_KEY = 'solar-auth-user-v1';
+const AUTH_USER_STORAGE_KEY = 'hoshang-auth-user-v1';
 
 const authState: AuthState = {
   user: null,

@@ -196,7 +196,7 @@ function LoginPage() {
               className="mt-2 text-[2.2rem] font-extrabold leading-none tracking-[-0.038em]"
               style={{ color: '#f7773a' }}
             >
-              Solar
+              Hoshang
             </h1>
             <p className="mt-3 text-[0.98rem] leading-relaxed" style={{ color: '#67768e' }}>
               {t('auth.login.subtitle')}

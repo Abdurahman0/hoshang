@@ -19,7 +19,7 @@ const apiBaseUrl = useApiProxy ? window.location.origin : configuredBaseUrl
 initializeServices(apiBaseUrl)
 
 try {
-	const storedTheme = window.localStorage.getItem('solar-theme')
+	const storedTheme = window.localStorage.getItem('hoshang-theme')
 
 	if (storedTheme === 'dark' || storedTheme === 'light') {
 		document.documentElement.dataset.theme = storedTheme

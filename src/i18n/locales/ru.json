@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Solar",
+    "appName": "Hoshang",
     "loading": "Загрузка...",
     "save": "Сохранить",
     "cancel": "Отмена",
@@ -157,7 +157,7 @@
   },
   "auth": {
     "login": {
-      "eyebrow": "Solar CRM",
+      "eyebrow": "Hoshang CRM",
       "subtitle": "Платформа управления CRM",
       "usernameLabel": "Имя пользователя",
       "usernamePlaceholder": "developer",
@@ -169,7 +169,7 @@
       "signingIn": "Вход...",
       "hidePassword": "Скрыть пароль",
       "showPassword": "Показать пароль",
-      "footerRights": "© 2026 Solar. Все права защищены.",
+      "footerRights": "© 2026 Hoshang. Все права защищены.",
       "footerPowered": "Разработчик"
     },
     "accessDenied": {
@@ -356,7 +356,7 @@
       "customerAmount": "Сумма для клиента",
       "referencePower": "Опорная мощность субсидии",
       "panelTypes": {
-        "jinkoJa": "Jinko / JA Solar",
+        "jinkoJa": "Jinko / JA Hoshang",
         "longiHiMoX10": "Longi HI MO X10"
       },
       "inverterTypes": {
