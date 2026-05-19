@@ -229,7 +229,7 @@ function LoginPage() {
                   required
                   aria-invalid={usernameHasError}
                   aria-describedby={usernameHasError ? 'login-username-error' : undefined}
-                  placeholder={t('auth.login.usernamePlaceholder')}
+                  placeholder="login"
                   className="h-full w-full rounded-[14px] border-0 bg-transparent px-3.5 pr-3.5 text-[15px] font-medium placeholder:text-[14px] placeholder:text-slate-400 focus:outline-none"
                   style={{ color: '#0f172a', caretColor: '#f7773a' }}
                 />
@@ -271,6 +271,7 @@ function LoginPage() {
                   minLength={8}
                   aria-invalid={passwordHasError}
                   aria-describedby={passwordHasError ? 'login-password-error' : undefined}
+                  placeholder="********"
                   className="h-full w-full rounded-[14px] border-0 bg-transparent px-3.5 pr-12 text-[15px] font-medium placeholder:text-[14px] placeholder:text-slate-400 focus:outline-none"
                   style={{ color: '#0f172a', caretColor: '#f7773a' }}
                 />
