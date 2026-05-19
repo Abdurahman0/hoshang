@@ -112,6 +112,17 @@ const inputClassName = [
 
 const STATUS_CODE_SLUG_REGEX = /^[a-zA-Z0-9_-]+$/;
 
+function toStatusCodeSlug(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-z0-9_-]/g, '')
+    .replace(/_+/g, '_')
+    .replace(/-+/g, '-')
+    .replace(/^[_-]+|[_-]+$/g, '');
+}
+
 function normalizeLead(value: unknown): Lead | null {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     return null;
@@ -352,6 +363,7 @@ function DashboardPage() {
   const [leadStatusForm, setLeadStatusForm] = useState<LeadStatusFormState>(
     createLeadStatusFormState(null),
   );
+  const [isLeadStatusCodeManuallyEdited, setIsLeadStatusCodeManuallyEdited] = useState(false);
   const [isLeadStatusSaving, setIsLeadStatusSaving] = useState(false);
   const [leadStatusFormError, setLeadStatusFormError] = useState<string | null>(null);
   const [deletingLeadStatusId, setDeletingLeadStatusId] = useState<number | null>(null);
@@ -918,7 +930,7 @@ function DashboardPage() {
       status: form.status,
     };
 
-    if (!payload.client_name || !payload.phone || !payload.reason) {
+    if (!payload.client_name || !payload.phone) {
       setSaveError(
         i18n.language === 'ru'
           ? 'Заполните обязательные поля.'
@@ -996,6 +1008,7 @@ function DashboardPage() {
     setLeadStatusModalMode('create');
     setEditingLeadStatusId(null);
     setLeadStatusForm(createLeadStatusFormState(null, nextSortOrder));
+    setIsLeadStatusCodeManuallyEdited(false);
     setLeadStatusFormError(null);
     setIsLeadStatusModalOpen(true);
   }
@@ -1003,6 +1016,7 @@ function DashboardPage() {
   async function openLeadStatusEditModal(statusId: number) {
     setLeadStatusModalMode('edit');
     setEditingLeadStatusId(statusId);
+    setIsLeadStatusCodeManuallyEdited(true);
     setLeadStatusFormError(null);
     setIsLeadStatusSaving(true);
 
@@ -1726,33 +1740,37 @@ function DashboardPage() {
                   </label>
                 </div>
 
-                <label className='grid min-w-0 gap-1.5'>
-                  <span className={labelClassName}>
-                    {i18n.language === 'ru' ? 'Причина' : 'Sabab'}
-                  </span>
-                  <textarea
-                    value={form.reason}
-                    onChange={(event) =>
-                      setForm((current) => ({
-                        ...current,
-                        reason: event.target.value,
-                      }))
-                    }
-                    className={[inputClassName, 'min-h-[120px] resize-y leading-6'].join(
-                      ' ',
-                    )}
-                    disabled={isSaving}
-                  />
-                </label>
+                {leadModalMode === 'edit' ? (
+                  <>
+                    <label className='grid min-w-0 gap-1.5'>
+                      <span className={labelClassName}>
+                        {i18n.language === 'ru' ? 'Причина' : 'Sabab'}
+                      </span>
+                      <textarea
+                        value={form.reason}
+                        onChange={(event) =>
+                          setForm((current) => ({
+                            ...current,
+                            reason: event.target.value,
+                          }))
+                        }
+                        className={[inputClassName, 'min-h-[120px] resize-y leading-6'].join(
+                          ' ',
+                        )}
+                        disabled={isSaving}
+                      />
+                    </label>
 
-                <div className='rounded-lg bg-surface-subtle/75 p-3'>
-                  <p className='m-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-text-muted'>
-                    {i18n.language === 'ru' ? 'Последний ответ AI' : 'Oxirgi AI javobi'}
-                  </p>
-                  <p className='m-0 mt-1 text-sm leading-6 text-text-secondary'>
-                    {leadModalMode === 'create' ? t('common.na') : selectedLead?.last_ai_reply || t('common.na')}
-                  </p>
-                </div>
+                    <div className='rounded-lg bg-surface-subtle/75 p-3'>
+                      <p className='m-0 text-[11px] font-semibold uppercase tracking-[0.12em] text-text-muted'>
+                        {i18n.language === 'ru' ? 'Последний ответ AI' : 'Oxirgi AI javobi'}
+                      </p>
+                      <p className='m-0 mt-1 text-sm leading-6 text-text-secondary'>
+                        {selectedLead?.last_ai_reply || t('common.na')}
+                      </p>
+                    </div>
+                  </>
+                ) : null}
 
                 {saveError ? (
                   <p className='m-0 rounded-lg bg-danger-bg px-3 py-2 text-sm font-medium text-danger'>
@@ -1829,12 +1847,14 @@ function DashboardPage() {
                   <input
                     className={inputClassName}
                     value={leadStatusForm.code}
-                    onChange={(event) =>
+                    onChange={(event) => {
+                      const nextCode = event.target.value;
+                      setIsLeadStatusCodeManuallyEdited(nextCode.trim().length > 0);
                       setLeadStatusForm((current) => ({
                         ...current,
-                        code: event.target.value,
-                      }))
-                    }
+                        code: nextCode,
+                      }));
+                    }}
                     placeholder={i18n.language === 'ru' ? 'Напр: archived' : "Masalan: archived"}
                     disabled={isLeadStatusSaving}
                     required
@@ -1854,10 +1874,24 @@ function DashboardPage() {
                     className={inputClassName}
                     value={leadStatusForm.label}
                     onChange={(event) =>
-                      setLeadStatusForm((current) => ({
-                        ...current,
-                        label: event.target.value,
-                      }))
+                      setLeadStatusForm((current) => {
+                        const nextLabel = event.target.value;
+                        if (
+                          leadStatusModalMode === 'create' &&
+                          !isLeadStatusCodeManuallyEdited
+                        ) {
+                          return {
+                            ...current,
+                            label: nextLabel,
+                            code: toStatusCodeSlug(nextLabel),
+                          };
+                        }
+
+                        return {
+                          ...current,
+                          label: nextLabel,
+                        };
+                      })
                     }
                     disabled={isLeadStatusSaving}
                     required
