@@ -962,13 +962,16 @@ function DashboardPage() {
         setIsLeadModalOpen(false);
         setForm(createLeadForm(null));
       } else {
-        setSelectedLead(updatedLead);
-        setForm(createLeadForm(updatedLead));
         setLeads((current) =>
           current.map((lead) =>
             lead.id === updatedLead.id ? updatedLead : lead,
           ),
         );
+        setIsLeadModalOpen(false);
+        setSelectedLeadId(null);
+        setSelectedLead(null);
+        setLeadDetailError(null);
+        setForm(createLeadForm(null));
       }
     } catch {
       setSaveError(

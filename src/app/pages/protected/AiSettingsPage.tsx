@@ -3,6 +3,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import AppIcon from '../../../components/shared/icons/AppIcon';
 import {
+  ConfirmActionModal,
   EmptyState,
   LoadingState,
   PageCard,
@@ -152,6 +153,7 @@ function AiSettingsPage() {
   const [showApiKey, setShowApiKey] = useState(false);
   const [fieldError, setFieldError] = useState<string | null>(null);
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+  const [isResetConfirmOpen, setIsResetConfirmOpen] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -263,6 +265,13 @@ function AiSettingsPage() {
     } finally {
       setIsSaving(false);
     }
+  }
+
+  function handleConfirmReset() {
+    setForm(createFormState(setting));
+    setFieldError(null);
+    setSaveMessage(null);
+    setIsResetConfirmOpen(false);
   }
 
   const header = (
@@ -471,12 +480,8 @@ function AiSettingsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
-                className="inline-flex min-h-10 items-center justify-center rounded-lg bg-surface-subtle px-4 text-sm font-semibold text-text-secondary transition duration-fast hover:bg-surface-muted hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25 disabled:cursor-not-allowed disabled:opacity-60"
-                onClick={() => {
-                  setForm(createFormState(setting));
-                  setFieldError(null);
-                  setSaveMessage(null);
-                }}
+                className="inline-flex min-h-10 items-center justify-center rounded-lg bg-danger-bg px-4 text-sm font-semibold text-danger transition duration-fast hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-danger/35 disabled:cursor-not-allowed disabled:opacity-60"
+                onClick={() => setIsResetConfirmOpen(true)}
                 disabled={isSaving}
               >
                 {t('common.reset', { defaultValue: 'Reset' })}
@@ -494,6 +499,29 @@ function AiSettingsPage() {
           </form>
         </PageCard>
       </PageSection>
+
+      <ConfirmActionModal
+        open={isResetConfirmOpen}
+        title={
+          i18n.language === 'ru'
+            ? 'Сбросить изменения AI настроек'
+            : "AI sozlamalardagi o'zgarishlarni bekor qilish"
+        }
+        description={
+          i18n.language === 'ru'
+            ? 'Несохраненные изменения будут удалены. Продолжить?'
+            : "Saqlanmagan o'zgarishlar bekor qilinadi. Davom etasizmi?"
+        }
+        confirmLabel={t('common.reset', { defaultValue: 'Reset' })}
+        cancelLabel={t('common.cancel')}
+        onConfirm={handleConfirmReset}
+        onClose={() => {
+          if (!isSaving) {
+            setIsResetConfirmOpen(false);
+          }
+        }}
+        isLoading={isSaving}
+      />
     </PageLayout>
   );
 }
