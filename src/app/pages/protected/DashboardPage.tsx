@@ -1276,7 +1276,7 @@ function DashboardPage() {
   return (
     <PageLayout header={header}>
       <PageSection>
-        <PageCard allowOverflow>
+        <PageCard>
           <div className='mb-4 flex flex-wrap items-center justify-between gap-2'>
             <div className='inline-flex items-center gap-1 rounded-full bg-surface-subtle p-1'>
               <button
